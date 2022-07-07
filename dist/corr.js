@@ -1,4 +1,15 @@
-import mean from './mean'
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = corr;
+
+var _mean = require("./mean");
+
+var _mean2 = _interopRequireDefault(_mean);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * This function calculates the Pearson product-moment correlation coefficient
@@ -21,24 +32,22 @@ import mean from './mean'
  * 0.4274
  */
 
-export default function corr(x, y){
+function corr(x, y) {
   var n = x.length;
-  if (n !== y.length){
+  if (n !== y.length) {
     throw "Error in call to corr: input arrays must be of the same length.";
-  }
-  else{
-    var x_bar = mean(x);
-    var y_bar = mean(y);
+  } else {
+    var x_bar = (0, _mean2.default)(x);
+    var y_bar = (0, _mean2.default)(y);
     var x2 = 0;
     var y2 = 0;
     var xy = 0;
-    for (let i = 0; i < x.length; i++){
+    for (var i = 0; i < x.length; i++) {
       x2 += Math.pow(x[i], 2);
       y2 += Math.pow(y[i], 2);
-      xy += x[i]*y[i];
+      xy += x[i] * y[i];
     }
-    var r = (xy - n*x_bar*y_bar)/
-      (Math.sqrt(x2 - n*Math.pow(x_bar, 2))*Math.sqrt(y2 - n*Math.pow(y_bar, 2)));
+    var r = (xy - n * x_bar * y_bar) / (Math.sqrt(x2 - n * Math.pow(x_bar, 2)) * Math.sqrt(y2 - n * Math.pow(y_bar, 2)));
     return r;
   }
 }

@@ -80,6 +80,7 @@ var should = require('chai').should(),
   sort_points_asc = mu.sort_points_asc;
   sort_points_asc_by_id = mu.sort_points_asc_by_id;
   staff_voice_xml2staff_voice_json = mu.staff_voice_xml2staff_voice_json;
+  timelapse_object = mu.timelapse_object;
 
   // File conversion.
   comp_obj2note_point_set = mu.comp_obj2note_point_set;
@@ -886,6 +887,13 @@ describe('#staff_voice_xml2staff_voice_json', function(){
     staff_voice_xml2staff_voice_json(6, [9, 10], 8).should.eql([10, 1]);
   });
 });
+
+
+// describe('#timelapse_object', function(){
+//   it('maps timelapse_object() to {}', function(){
+//     timelapse_object().should.eql({});
+//   });
+// });
 
 
 // File conversion.

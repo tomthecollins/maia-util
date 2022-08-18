@@ -1,4 +1,3 @@
-
 export default function index_point_set(point_set){
   // Tom Collins 24/11/2014.
   // In

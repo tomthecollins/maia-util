@@ -1,5 +1,3 @@
-
-
 export default function min_argmin (arr){
   // Tom Collins 21/10/2014.
   // In

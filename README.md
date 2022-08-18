@@ -69,6 +69,7 @@ Bugs can be reported to https://groups.google.com/d/forum/maia-inc-dev
 
 ## Release History
 
+* 0.2.30 Added timelapse_object.
 * 0.2.28-29 Incorporating velocity property in comp_obj2note_point_set() and updating SIAR implementation.
 * 0.2.26-27 Fixed a bug in group_grace_by_contiguous_id.
 * 0.2.21-25 Added a few more basic statistics functions.

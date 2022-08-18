@@ -115,6 +115,7 @@ import farey_default from './farey'
 import farey_quantise_default from './farey_quantise'
 import get_parameter_by_name_default from './get_parameter_by_name'
 import copy_to_clipboard_default from './copy_to_clipboard'
+import timelapse_object_default from './timelapse_object'
 
 
 export const append_ontimes_to_time_signatures = append_ontimes_to_time_signatures_default
@@ -201,6 +202,7 @@ export const farey = farey_default
 export const farey_quantise = farey_quantise_default
 export const get_parameter_by_name = get_parameter_by_name_default
 export const copy_to_clipboard = copy_to_clipboard_default
+export const timelapse_object = timelapse_object_default
 
 export default {
   append_ontimes_to_time_signatures,
@@ -285,5 +287,6 @@ export default {
   farey,
   farey_quantise,
   get_parameter_by_name,
-  copy_to_clipboard
+  copy_to_clipboard,
+  timelapse_object
 }

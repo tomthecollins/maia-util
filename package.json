@@ -1,6 +1,6 @@
 {
   "name": "maia-util",
-  "version": "0.2.29",
+  "version": "0.2.30",
   "description": "Utility math and music functions supporting various applications by Music Artificial Intelligence Algorithms, Inc.",
   "main": "dist/index.js",
   "jsnext:main": "es6/index.js",
@@ -38,6 +38,7 @@
   "dependencies": {
     "browserify": "^16.2.3",
     "rollup-plugin-commonjs": "^10.0.0",
-    "watchify": "^3.11.1"
+    "watchify": "^3.11.1",
+    "uuid": "^3.1.0"
   }
 }

@@ -3263,7 +3263,65 @@ var mu = (function () {
     }
   }
 
-  const uu = require("uuid/v4");
+  /**
+   * This function generates a string of specifiable length, consisting of random
+   * alpha-numeric characters.
+   *
+   * @author Tom Collins
+   * @comment 26th April 2023
+   * @param {number} len - A number specifying the desired length of the string.
+   * @return {string} The string of random alpha-numeric characters.
+   *
+   * @example
+   *     rand_alphanumeric(3)
+   * →
+   * "k6j"
+   */
+  function rand_alphanumeric(len){
+    // 48-57 encode 0-9, and 97-122 encode a-z.
+    let outArr = new Array(len);
+    for (let i = 0; i < len; i++){
+      // Generate a random integer between 87 and 122. If it's less than 97,
+      // subtract 39 to get into the range 48-57.
+      outArr[i] = 87 + Math.floor(36*Math.random());
+      if (outArr[i] < 97){
+        outArr[i] -= 39;
+      }
+      outArr[i] = String.fromCharCode(outArr[i]);
+    }
+    return outArr.join("")
+  }
+
+  /**
+   * This function generates a string of specifiable length, consisting of random
+   * alpha-numeric characters from an alphabet of size 2^5 = 32.
+   *
+   * @author Tom Collins
+   * @comment 26th April 2023
+   * @param {number} len - A number specifying the desired length of the string.
+   * @return {string} The string of random alpha-numeric characters.
+   *
+   * @example
+   *     rand_5_bit(3)
+   * →
+   * "k5j"
+   */
+  function rand_5_bit(len){
+    // 48-53 encode 0-5, and 97-122 encode a-z.
+    let outArr = new Array(len);
+    for (let i = 0; i < len; i++){
+      // Generate a random integer between 91 and 122. If it's less than 97,
+      // subtract 43 to get into the range 48-53.
+      outArr[i] = 91 + Math.floor(32*Math.random());
+      if (outArr[i] < 97){
+        outArr[i] -= 43;
+      }
+      outArr[i] = String.fromCharCode(outArr[i]);
+    }
+    return outArr.join("")
+  }
+
+  // const uu = require("uuid/v4")
   /**
    * This function counts rows of the input `point_set`, weighted, if desired, by
    * values in `wght_idx`.
@@ -3273,11 +3331,13 @@ var mu = (function () {
    * @param {string} [idEntity] - A uuid indicating a specific entity.
    * @param {string} [idEditOf] - A uuid indicating a specific element of which
    * this element is an edited version.
-   * @return {Object} An object containing the properties id, idEntityOf,
-   * idEditOf, stampCreate, and stampDelete.
+   * @param {boolean} [stamp] - A boolean indicating whether to instantiate
+   * idEntity, id EditOf, stampCreate, and stampDelete properties.
+   *@return {Object} An object containing the properties id, and possibly
+   * idEntityOf, idEditOf, stampCreate, and stampDelete.
    *
    * @example
-   *     timelapse_object()
+   *     timelapse_object(null, null, true)
    * →
    * {
    *   "id": "18b99848-0d0d-40de-b705-67db3a312817",
@@ -3288,9 +3348,15 @@ var mu = (function () {
    * }
    */
 
-  function timelapse_object(idEntity = null, idEditOf = null){
+  function timelapse_object(idEntity = null, idEditOf = null, stamp = false){
+    if (!stamp){
+      return {
+        "id": rand_5_bit()
+      }
+    }
     return {
-      "id": uu(),
+      "id": rand_5_bit(),
+      // "id": uu(),
       "idEntity": idEntity,
       "idEditOf": idEditOf,
       "stampCreate": Date.now(),
@@ -3323,9 +3389,9 @@ var mu = (function () {
    * This documentation is in the process of being completed. Some functions have
    * not had their existing documentation converted to JSDoc format yet.
    *
-   * @version 0.2.20
+   * @version 0.3.0
    * @author Tom Collins and Christian Coulon
-   * @copyright 2016-2020
+   * @copyright 2016-2023
    *
    */
 
@@ -3413,6 +3479,8 @@ var mu = (function () {
   const farey_quantise$1 = farey_quantise;
   const get_parameter_by_name$1 = get_parameter_by_name;
   const copy_to_clipboard$1 = copy_to_clipboard;
+  const rand_alphanumeric$1 = rand_alphanumeric;
+  const rand_5_bit$1 = rand_5_bit;
   const timelapse_object$1 = timelapse_object;
 
   var maiaUtil = {
@@ -3499,6 +3567,8 @@ var mu = (function () {
     farey_quantise: farey_quantise$1,
     get_parameter_by_name: get_parameter_by_name$1,
     copy_to_clipboard: copy_to_clipboard$1,
+    rand_alphanumeric: rand_alphanumeric$1,
+    rand_5_bit: rand_5_bit$1,
     timelapse_object: timelapse_object$1
   };
 

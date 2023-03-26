@@ -23,9 +23,9 @@
  * This documentation is in the process of being completed. Some functions have
  * not had their existing documentation converted to JSDoc format yet.
  *
- * @version 0.2.20
+ * @version 0.3.0
  * @author Tom Collins and Christian Coulon
- * @copyright 2016-2020
+ * @copyright 2016-2023
  *
  */
 
@@ -115,6 +115,8 @@ import farey_default from './farey'
 import farey_quantise_default from './farey_quantise'
 import get_parameter_by_name_default from './get_parameter_by_name'
 import copy_to_clipboard_default from './copy_to_clipboard'
+import rand_alphanumeric_default from './rand_alphanumeric'
+import rand_5_bit_default from './rand_5_bit'
 import timelapse_object_default from './timelapse_object'
 
 
@@ -202,6 +204,8 @@ export const farey = farey_default
 export const farey_quantise = farey_quantise_default
 export const get_parameter_by_name = get_parameter_by_name_default
 export const copy_to_clipboard = copy_to_clipboard_default
+export const rand_alphanumeric = rand_alphanumeric_default
+export const rand_5_bit = rand_5_bit_default
 export const timelapse_object = timelapse_object_default
 
 export default {
@@ -288,5 +292,7 @@ export default {
   farey_quantise,
   get_parameter_by_name,
   copy_to_clipboard,
+  rand_alphanumeric,
+  rand_5_bit,
   timelapse_object
 }

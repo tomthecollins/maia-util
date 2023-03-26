@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.timelapse_object = exports.copy_to_clipboard = exports.get_parameter_by_name = exports.farey_quantise = exports.farey = exports.string_separated_string2array = exports.my_last_string = exports.locations = exports.cardinality_score = exports.siar = exports.intersection = exports.maximal_translatable_pattern = exports.orthogonal_projection_not_unique_equalp = exports.lex_less_or_equal = exports.lex_less_or_equal_triple = exports.index_1st_element_gt = exports.sample_without_replacement = exports.mod = exports.excess_kurtosis = exports.median_skewness = exports.skewness = exports.std = exports.median = exports.mean = exports.get_random_int_inclusive = exports.get_random_int = exports.get_random_arbitrary = exports.corr = exports.choose_one = exports.unique_rows = exports.restrict_point_set_in_nth_to_xs = exports.subtract_two_arrays = exports.sort_rows = exports.lex_more = exports.index_point_set = exports.get_unique = exports.copy_point_set = exports.multiply_array_by_constant = exports.min_argmin = exports.max_argmax = exports.cyclically_permute_array_by = exports.array_sum = exports.array_object_index_of_array = exports.array_object_index_of = exports.append_array_of_arrays = exports.append_array = exports.segment = exports.score_segment_against_template = exports.points_belonging_to_interval = exports.harman_forward = exports.HarmAn_forward = exports.find_segment_against_template = exports.connect_or_not = exports.chord_lookup_pbmin7ths = exports.chord_templates_pbmin7ths = exports.krumhansl_and_kessler_key_profiles = exports.aarden_key_profiles = exports.fifth_steps_mode = exports.tonic_pitch_closest = exports.count_rows = exports.copy_array_object = exports.split_point_set_by_staff = exports.comp_obj2note_point_set = exports.staff_voice_xml2staff_voice_json = exports.sort_points_asc_by_id = exports.sort_points_asc = exports.row_of_max_bar_leq_bar_arg = exports.row_of_max_ontime_leq_ontime_arg = exports.resolve_expressions = exports.remove_duplicate_clef_changes = exports.pitch_and_octave2midi_note_morphetic_pair = exports.ontime_of_bar_and_beat_number = exports.nos_symbols_and_mode2key_name = exports.guess_morphetic_in_c_major = exports.guess_morphetic_in_C_major = exports.mnn2pitch_simple = exports.MNN2pitch_simple = exports.midi_note_morphetic_pair2pitch_and_octave = exports.guess_morphetic = exports.group_grace_by_contiguous_id = exports.default_page_and_system_breaks = exports.convert_1st_bar2anacrusis_val = exports.clef_sign_and_line2clef_name = exports.bar_and_beat_number_of_ontime = exports.append_ontimes_to_time_signatures = undefined;
+exports.timelapse_object = exports.rand_5_bit = exports.rand_alphanumeric = exports.copy_to_clipboard = exports.get_parameter_by_name = exports.farey_quantise = exports.farey = exports.string_separated_string2array = exports.my_last_string = exports.locations = exports.cardinality_score = exports.siar = exports.intersection = exports.maximal_translatable_pattern = exports.orthogonal_projection_not_unique_equalp = exports.lex_less_or_equal = exports.lex_less_or_equal_triple = exports.index_1st_element_gt = exports.sample_without_replacement = exports.mod = exports.excess_kurtosis = exports.median_skewness = exports.skewness = exports.std = exports.median = exports.mean = exports.get_random_int_inclusive = exports.get_random_int = exports.get_random_arbitrary = exports.corr = exports.choose_one = exports.unique_rows = exports.restrict_point_set_in_nth_to_xs = exports.subtract_two_arrays = exports.sort_rows = exports.lex_more = exports.index_point_set = exports.get_unique = exports.copy_point_set = exports.multiply_array_by_constant = exports.min_argmin = exports.max_argmax = exports.cyclically_permute_array_by = exports.array_sum = exports.array_object_index_of_array = exports.array_object_index_of = exports.append_array_of_arrays = exports.append_array = exports.segment = exports.score_segment_against_template = exports.points_belonging_to_interval = exports.harman_forward = exports.HarmAn_forward = exports.find_segment_against_template = exports.connect_or_not = exports.chord_lookup_pbmin7ths = exports.chord_templates_pbmin7ths = exports.krumhansl_and_kessler_key_profiles = exports.aarden_key_profiles = exports.fifth_steps_mode = exports.tonic_pitch_closest = exports.count_rows = exports.copy_array_object = exports.split_point_set_by_staff = exports.comp_obj2note_point_set = exports.staff_voice_xml2staff_voice_json = exports.sort_points_asc_by_id = exports.sort_points_asc = exports.row_of_max_bar_leq_bar_arg = exports.row_of_max_ontime_leq_ontime_arg = exports.resolve_expressions = exports.remove_duplicate_clef_changes = exports.pitch_and_octave2midi_note_morphetic_pair = exports.ontime_of_bar_and_beat_number = exports.nos_symbols_and_mode2key_name = exports.guess_morphetic_in_c_major = exports.guess_morphetic_in_C_major = exports.mnn2pitch_simple = exports.MNN2pitch_simple = exports.midi_note_morphetic_pair2pitch_and_octave = exports.guess_morphetic = exports.group_grace_by_contiguous_id = exports.default_page_and_system_breaks = exports.convert_1st_bar2anacrusis_val = exports.clef_sign_and_line2clef_name = exports.bar_and_beat_number_of_ontime = exports.append_ontimes_to_time_signatures = undefined;
 
 require('./util_array');
 
@@ -315,6 +315,14 @@ var _copy_to_clipboard = require('./copy_to_clipboard');
 
 var _copy_to_clipboard2 = _interopRequireDefault(_copy_to_clipboard);
 
+var _rand_alphanumeric = require('./rand_alphanumeric');
+
+var _rand_alphanumeric2 = _interopRequireDefault(_rand_alphanumeric);
+
+var _rand_5_bit = require('./rand_5_bit');
+
+var _rand_5_bit2 = _interopRequireDefault(_rand_5_bit);
+
 var _timelapse_object = require('./timelapse_object');
 
 var _timelapse_object2 = _interopRequireDefault(_timelapse_object);
@@ -346,9 +354,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * This documentation is in the process of being completed. Some functions have
  * not had their existing documentation converted to JSDoc format yet.
  *
- * @version 0.2.20
+ * @version 0.3.0
  * @author Tom Collins and Christian Coulon
- * @copyright 2016-2020
+ * @copyright 2016-2023
  *
  */
 
@@ -436,6 +444,8 @@ var farey = exports.farey = _farey2.default;
 var farey_quantise = exports.farey_quantise = _farey_quantise2.default;
 var get_parameter_by_name = exports.get_parameter_by_name = _get_parameter_by_name2.default;
 var copy_to_clipboard = exports.copy_to_clipboard = _copy_to_clipboard2.default;
+var rand_alphanumeric = exports.rand_alphanumeric = _rand_alphanumeric2.default;
+var rand_5_bit = exports.rand_5_bit = _rand_5_bit2.default;
 var timelapse_object = exports.timelapse_object = _timelapse_object2.default;
 
 exports.default = {
@@ -522,5 +532,7 @@ exports.default = {
   farey_quantise: farey_quantise,
   get_parameter_by_name: get_parameter_by_name,
   copy_to_clipboard: copy_to_clipboard,
+  rand_alphanumeric: rand_alphanumeric,
+  rand_5_bit: rand_5_bit,
   timelapse_object: timelapse_object
 };

@@ -1,4 +1,5 @@
-const uu = require("uuid/v4")
+import rand_5_bit from './rand_5_bit'
+// const uu = require("uuid/v4")
 /**
  * This function counts rows of the input `point_set`, weighted, if desired, by
  * values in `wght_idx`.
@@ -8,11 +9,13 @@ const uu = require("uuid/v4")
  * @param {string} [idEntity] - A uuid indicating a specific entity.
  * @param {string} [idEditOf] - A uuid indicating a specific element of which
  * this element is an edited version.
- * @return {Object} An object containing the properties id, idEntityOf,
- * idEditOf, stampCreate, and stampDelete.
+ * @param {boolean} [stamp] - A boolean indicating whether to instantiate
+ * idEntity, id EditOf, stampCreate, and stampDelete properties.
+ *@return {Object} An object containing the properties id, and possibly
+ * idEntityOf, idEditOf, stampCreate, and stampDelete.
  *
  * @example
- *     timelapse_object()
+ *     timelapse_object(null, null, true)
  * →
  * {
  *   "id": "18b99848-0d0d-40de-b705-67db3a312817",
@@ -23,9 +26,15 @@ const uu = require("uuid/v4")
  * }
  */
 
-export default function timelapse_object(idEntity = null, idEditOf = null){
+export default function timelapse_object(idEntity = null, idEditOf = null, stamp = false){
+  if (!stamp){
+    return {
+      "id": rand_5_bit()
+    }
+  }
   return {
-    "id": uu(),
+    "id": rand_5_bit(),
+    // "id": uu(),
     "idEntity": idEntity,
     "idEditOf": idEditOf,
     "stampCreate": Date.now(),

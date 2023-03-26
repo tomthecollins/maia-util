@@ -26,14 +26,16 @@ import rand_5_bit from './rand_5_bit'
  * }
  */
 
-export default function timelapse_object(idEntity = null, idEditOf = null, stamp = false){
+export default function timelapse_object(
+  idEntity = null, idEditOf = null, stamp = false, len = 5
+){
   if (!stamp){
     return {
-      "id": rand_5_bit()
+      "id": rand_5_bit(len)
     }
   }
   return {
-    "id": rand_5_bit(),
+    "id": rand_5_bit(len),
     // "id": uu(),
     "idEntity": idEntity,
     "idEditOf": idEditOf,

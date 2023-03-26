@@ -3348,14 +3348,16 @@ var mu = (function () {
    * }
    */
 
-  function timelapse_object(idEntity = null, idEditOf = null, stamp = false){
+  function timelapse_object(
+    idEntity = null, idEditOf = null, stamp = false, len = 5
+  ){
     if (!stamp){
       return {
-        "id": rand_5_bit()
+        "id": rand_5_bit(len)
       }
     }
     return {
-      "id": rand_5_bit(),
+      "id": rand_5_bit(len),
       // "id": uu(),
       "idEntity": idEntity,
       "idEditOf": idEditOf,
@@ -3389,7 +3391,7 @@ var mu = (function () {
    * This documentation is in the process of being completed. Some functions have
    * not had their existing documentation converted to JSDoc format yet.
    *
-   * @version 0.3.0
+   * @version 0.3.1
    * @author Tom Collins and Christian Coulon
    * @copyright 2016-2023
    *

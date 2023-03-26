@@ -42,14 +42,15 @@ function timelapse_object() {
   var idEntity = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
   var idEditOf = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   var stamp = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  var len = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 5;
 
   if (!stamp) {
     return {
-      "id": (0, _rand_5_bit2.default)()
+      "id": (0, _rand_5_bit2.default)(len)
     };
   }
   return {
-    "id": (0, _rand_5_bit2.default)(),
+    "id": (0, _rand_5_bit2.default)(len),
     // "id": uu(),
     "idEntity": idEntity,
     "idEditOf": idEditOf,

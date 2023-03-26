@@ -354,7 +354,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * This documentation is in the process of being completed. Some functions have
  * not had their existing documentation converted to JSDoc format yet.
  *
- * @version 0.3.0
+ * @version 0.3.1
  * @author Tom Collins and Christian Coulon
  * @copyright 2016-2023
  *

@@ -300,9 +300,24 @@ describe('#Array.prototype.equals', function(){
     tf.should.equal(true);
   });
 
-  it('maps [1, [0, 3]].equals([1, [0, 3]] to false', function(){
+  it('maps [1, [0, 3]].equals([1, [2, 3]] to false', function(){
     var a = [1, [0, 3]];
     var tf = a.equals([1, [2, 3]]);
+    tf.should.equal(false);
+  });
+});
+
+
+describe('#Array.prototype.approx_equals', function(){
+  it('maps [1, [2, 3]].approx_equals([1, [2.00001, 3]] to true', function(){
+    var a = [1, [2, 3]];
+    var tf = a.approx_equals([1, [2.00001, 3]]);
+    tf.should.equal(true);
+  });
+
+  it('maps [1, [2, 3]].approx_equals([1, [2.00002, 3]] to false', function(){
+    var a = [1, [2, 3]];
+    var tf = a.approx_equals([1, [2.00002, 3]]);
     tf.should.equal(false);
   });
 });

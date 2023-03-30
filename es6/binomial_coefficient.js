@@ -14,6 +14,19 @@ import factorial from './factorial'
  * →
  * 24
  */
-export default function binomial_coefficient(n, k){
-  return factorial(n)/factorial(k)/factorial(n - k >= 0 ? n - k : NaN)
-}
+ export default function binomial_coefficient(n, k){
+   if (n - k < 0){
+     return NaN
+   }
+   let ans = 1
+   for (let i = 1; i <= Math.min(k, n - k); i++){
+     ans *= (n + 1 - i)/i
+   }
+   return ans
+ }
+
+// This version clearly more closely related to the formula, but inefficient/
+// impossible to calculate factorial(n) for large n.
+// export default function binomial_coefficient(n, k){
+//   return factorial(n)/factorial(k)/factorial(n - k >= 0 ? n - k : NaN)
+// }

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.timelapse_object = exports.rand_5_bit = exports.rand_alphanumeric = exports.copy_to_clipboard = exports.get_parameter_by_name = exports.farey_quantise = exports.farey = exports.string_separated_string2array = exports.my_last_string = exports.locations = exports.cardinality_score = exports.siar = exports.intersection = exports.maximal_translatable_pattern = exports.orthogonal_projection_not_unique_equalp = exports.lex_less_or_equal = exports.lex_less_or_equal_triple = exports.index_1st_element_gt = exports.sample_without_replacement = exports.mod = exports.excess_kurtosis = exports.median_skewness = exports.skewness = exports.std = exports.median = exports.mean = exports.get_random_int_inclusive = exports.get_random_int = exports.get_random_arbitrary = exports.corr = exports.choose_one = exports.unique_rows = exports.restrict_point_set_in_nth_to_xs = exports.subtract_two_arrays = exports.sort_rows = exports.lex_more = exports.index_point_set = exports.get_unique = exports.copy_point_set = exports.multiply_array_by_constant = exports.min_argmin = exports.max_argmax = exports.cyclically_permute_array_by = exports.array_sum = exports.array_object_index_of_array = exports.array_object_index_of = exports.append_array_of_arrays = exports.append_array = exports.segment = exports.score_segment_against_template = exports.points_belonging_to_interval = exports.harman_forward = exports.HarmAn_forward = exports.find_segment_against_template = exports.connect_or_not = exports.chord_lookup_pbmin7ths = exports.chord_templates_pbmin7ths = exports.krumhansl_and_kessler_key_profiles = exports.aarden_key_profiles = exports.fifth_steps_mode = exports.tonic_pitch_closest = exports.count_rows = exports.copy_array_object = exports.split_point_set_by_staff = exports.comp_obj2note_point_set = exports.staff_voice_xml2staff_voice_json = exports.sort_points_asc_by_id = exports.sort_points_asc = exports.row_of_max_bar_leq_bar_arg = exports.row_of_max_ontime_leq_ontime_arg = exports.resolve_expressions = exports.remove_duplicate_clef_changes = exports.pitch_and_octave2midi_note_morphetic_pair = exports.ontime_of_bar_and_beat_number = exports.nos_symbols_and_mode2key_name = exports.guess_morphetic_in_c_major = exports.guess_morphetic_in_C_major = exports.mnn2pitch_simple = exports.MNN2pitch_simple = exports.midi_note_morphetic_pair2pitch_and_octave = exports.guess_morphetic = exports.group_grace_by_contiguous_id = exports.default_page_and_system_breaks = exports.convert_1st_bar2anacrusis_val = exports.clef_sign_and_line2clef_name = exports.bar_and_beat_number_of_ontime = exports.append_ontimes_to_time_signatures = undefined;
+exports.timelapse_object = exports.rand_5_bit = exports.rand_alphanumeric = exports.copy_to_clipboard = exports.get_parameter_by_name = exports.farey_quantise = exports.farey = exports.string_separated_string2array = exports.my_last_string = exports.locations = exports.cardinality_score = exports.siar = exports.intersection = exports.maximal_translatable_pattern = exports.orthogonal_projection_not_unique_equalp = exports.lex_less_or_equal = exports.lex_less_or_equal_triple = exports.index_1st_element_gt = exports.sample_without_replacement = exports.mod = exports.excess_kurtosis = exports.median_skewness = exports.skewness = exports.std = exports.median = exports.mean = exports.get_random_int_inclusive = exports.get_random_int = exports.get_random_arbitrary = exports.corr = exports.choose_one = exports.unique_rows = exports.restrict_point_set_in_nth_to_xs = exports.subtract_two_arrays = exports.sort_rows = exports.lex_more = exports.index_point_set = exports.get_unique = exports.copy_point_set = exports.multiply_array_by_constant = exports.min_argmin = exports.max_argmax = exports.binomial_coefficient = exports.factorial = exports.cyclically_permute_array_by = exports.array_sum = exports.array_object_index_of_array = exports.array_object_index_of = exports.append_array_of_arrays = exports.append_array = exports.segment = exports.score_segment_against_template = exports.points_belonging_to_interval = exports.harman_forward = exports.HarmAn_forward = exports.find_segment_against_template = exports.connect_or_not = exports.chord_lookup_pbmin7ths = exports.chord_templates_pbmin7ths = exports.krumhansl_and_kessler_key_profiles = exports.aarden_key_profiles = exports.fifth_steps_mode = exports.tonic_pitch_closest = exports.count_rows = exports.copy_array_object = exports.split_point_set_by_staff = exports.comp_obj2note_point_set = exports.staff_voice_xml2staff_voice_json = exports.sort_points_asc_by_id = exports.sort_points_asc = exports.row_of_max_bar_leq_bar_arg = exports.row_of_max_ontime_leq_ontime_arg = exports.resolve_expressions = exports.remove_duplicate_clef_changes = exports.pitch_and_octave2midi_note_morphetic_pair = exports.ontime_of_bar_and_beat_number = exports.nos_symbols_and_mode2key_name = exports.guess_morphetic_in_c_major = exports.guess_morphetic_in_C_major = exports.mnn2pitch_simple = exports.MNN2pitch_simple = exports.midi_note_morphetic_pair2pitch_and_octave = exports.guess_morphetic = exports.group_grace_by_contiguous_id = exports.default_page_and_system_breaks = exports.convert_1st_bar2anacrusis_val = exports.clef_sign_and_line2clef_name = exports.bar_and_beat_number_of_ontime = exports.append_ontimes_to_time_signatures = undefined;
 
 require('./util_array');
 
@@ -158,6 +158,14 @@ var _array_sum2 = _interopRequireDefault(_array_sum);
 var _cyclically_permute_array_by = require('./cyclically_permute_array_by');
 
 var _cyclically_permute_array_by2 = _interopRequireDefault(_cyclically_permute_array_by);
+
+var _factorial = require('./factorial');
+
+var _factorial2 = _interopRequireDefault(_factorial);
+
+var _binomial_coefficient = require('./binomial_coefficient');
+
+var _binomial_coefficient2 = _interopRequireDefault(_binomial_coefficient);
 
 var _max_argmax = require('./max_argmax');
 
@@ -354,7 +362,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * This documentation is in the process of being completed. Some functions have
  * not had their existing documentation converted to JSDoc format yet.
  *
- * @version 0.3.1
+ * @version 0.3.2
  * @author Tom Collins and Christian Coulon
  * @copyright 2016-2023
  *
@@ -405,6 +413,8 @@ var array_object_index_of = exports.array_object_index_of = _array_object_index_
 var array_object_index_of_array = exports.array_object_index_of_array = _array_object_index_of_array2.default;
 var array_sum = exports.array_sum = _array_sum2.default;
 var cyclically_permute_array_by = exports.cyclically_permute_array_by = _cyclically_permute_array_by2.default;
+var factorial = exports.factorial = _factorial2.default;
+var binomial_coefficient = exports.binomial_coefficient = _binomial_coefficient2.default;
 var max_argmax = exports.max_argmax = _max_argmax2.default;
 var min_argmin = exports.min_argmin = _min_argmin2.default;
 var multiply_array_by_constant = exports.multiply_array_by_constant = _multiply_array_by_constant2.default;
@@ -493,6 +503,8 @@ exports.default = {
   array_object_index_of_array: array_object_index_of_array,
   array_sum: array_sum,
   cyclically_permute_array_by: cyclically_permute_array_by,
+  factorial: factorial,
+  binomial_coefficient: binomial_coefficient,
   max_argmax: max_argmax,
   min_argmin: min_argmin,
   multiply_array_by_constant: multiply_array_by_constant,

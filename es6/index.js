@@ -23,7 +23,7 @@
  * This documentation is in the process of being completed. Some functions have
  * not had their existing documentation converted to JSDoc format yet.
  *
- * @version 0.3.1
+ * @version 0.3.2
  * @author Tom Collins and Christian Coulon
  * @copyright 2016-2023
  *
@@ -76,6 +76,8 @@ import array_object_index_of_default from './array_object_index_of'
 import array_object_index_of_array_default from './array_object_index_of_array'
 import array_sum_default from './array_sum'
 import cyclically_permute_array_by_default from './cyclically_permute_array_by'
+import factorial_default from './factorial'
+import binomial_coefficient_default from './binomial_coefficient'
 import max_argmax_default from './max_argmax'
 import min_argmin_default from './min_argmin'
 import multiply_array_by_constant_default from './multiply_array_by_constant'
@@ -165,6 +167,8 @@ export const array_object_index_of = array_object_index_of_default
 export const array_object_index_of_array = array_object_index_of_array_default
 export const array_sum = array_sum_default
 export const cyclically_permute_array_by = cyclically_permute_array_by_default
+export const factorial = factorial_default
+export const binomial_coefficient = binomial_coefficient_default
 export const max_argmax = max_argmax_default
 export const min_argmin = min_argmin_default
 export const multiply_array_by_constant = multiply_array_by_constant_default
@@ -253,6 +257,8 @@ export default {
   array_object_index_of_array,
   array_sum,
   cyclically_permute_array_by,
+  factorial,
+  binomial_coefficient,
   max_argmax,
   min_argmin,
   multiply_array_by_constant,

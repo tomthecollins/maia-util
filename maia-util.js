@@ -1573,7 +1573,7 @@ var mu = (function () {
     var set_out = [];
     for (let ip = 0; ip < point_set.length; ip++){
       var curr_point = [];
-      for (let id = 0; id < point_set[0].length; id++){
+      for (let id = 0; id < indicator.length; id++){
         if (indicator[id] == 1){
           curr_point.push(point_set[ip][id]);
         }
@@ -2339,6 +2339,47 @@ var mu = (function () {
     //  count += an_array[i];
     // }
     // return count;
+  }
+
+  /**
+   * This function calculates the factorial of an input number, e.g.,
+   * x * (x - 1) * (x - 2) * ... * 2 * 1.
+   *
+   * @author Tom Collins
+   * @comment 30th March 2023
+   * @param {number} x - An integer.
+   * @return {number} The calculated factorial.
+   *
+   * @example
+   *     factorial(4)
+   * →
+   * 24
+   */
+  function factorial(x){
+    if (x){
+      return x*factorial(x - 1)
+    }
+    else {
+      return x + 1
+    }
+  }
+
+  /**
+   * This function calculates the factorial of an input number, e.g.,
+   * x * (x - 1) * (x - 2) * ... * 2 * 1.
+   *
+   * @author Tom Collins
+   * @comment 30th March 2023
+   * @param {number} x - An integer.
+   * @return {number} The calculated factorial.
+   *
+   * @example
+   *     factorial(4)
+   * →
+   * 24
+   */
+  function binomial_coefficient(n, k){
+    return factorial(n)/factorial(k)/factorial(n - k >= 0 ? n - k : NaN)
   }
 
   function multiply_array_by_constant(an_array, a_constant){
@@ -3391,7 +3432,7 @@ var mu = (function () {
    * This documentation is in the process of being completed. Some functions have
    * not had their existing documentation converted to JSDoc format yet.
    *
-   * @version 0.3.1
+   * @version 0.3.2
    * @author Tom Collins and Christian Coulon
    * @copyright 2016-2023
    *
@@ -3442,6 +3483,8 @@ var mu = (function () {
   const array_object_index_of_array$1 = array_object_index_of_array;
   const array_sum$1 = array_sum;
   const cyclically_permute_array_by$1 = cyclically_permute_array_by;
+  const factorial$1 = factorial;
+  const binomial_coefficient$1 = binomial_coefficient;
   const max_argmax$1 = max_argmax;
   const min_argmin$1 = min_argmin;
   const multiply_array_by_constant$1 = multiply_array_by_constant;
@@ -3530,6 +3573,8 @@ var mu = (function () {
     array_object_index_of_array: array_object_index_of_array$1,
     array_sum: array_sum$1,
     cyclically_permute_array_by: cyclically_permute_array_by$1,
+    factorial: factorial$1,
+    binomial_coefficient: binomial_coefficient$1,
     max_argmax: max_argmax$1,
     min_argmin: min_argmin$1,
     multiply_array_by_constant: multiply_array_by_constant$1,

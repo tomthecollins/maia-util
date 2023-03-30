@@ -12,7 +12,7 @@ export default function orthogonal_projection_not_unique_equalp(point_set, indic
   var set_out = [];
   for (let ip = 0; ip < point_set.length; ip++){
     var curr_point = [];
-    for (let id = 0; id < point_set[0].length; id++){
+    for (let id = 0; id < indicator.length; id++){
       if (indicator[id] == 1){
         curr_point.push(point_set[ip][id]);
       }

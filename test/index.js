@@ -9,6 +9,8 @@ var should = require('chai').should(),
   array_sum = mu.array_sum;
   copy_array_object = mu.copy_array_object;
   cyclically_permute_array_by = mu.cyclically_permute_array_by;
+  factorial = mu.factorial;
+  binomial_coefficient = mu.binomial_coefficient;
   // Array.prototype.equals
   // Array.prototype.index_item_1st_occurs
   // Array.prototype.index_item_1st_doesnt_occur
@@ -257,6 +259,36 @@ describe('#cyclically_permute_array_by', function(){
 
   it('maps cyclically_permute_array_by([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 12) to [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]', function(){
     cyclically_permute_array_by([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 12).should.eql([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+  });
+});
+
+
+describe('#factorial', function(){
+  it('maps factorial(4) to 24', function(){
+    factorial(4).should.equal(24);
+  });
+
+  it('maps factorial(1) to 1', function(){
+    factorial(1).should.equal(1);
+  });
+
+  it('maps factorial(0) to 1', function(){
+    factorial(0).should.equal(1);
+  });
+});
+
+
+describe('#binomial_coefficient', function(){
+  it('maps binomial_coefficient(5, 2) to 10', function(){
+    binomial_coefficient(5, 2).should.equal(10);
+  });
+
+  it('maps binomial_coefficient(100, 100) to 1', function(){
+    binomial_coefficient(100, 100).should.equal(1);
+  });
+
+  it('maps binomial_coefficient(0) to 1', function(){
+    binomial_coefficient(2, 5).should.eql(NaN);
   });
 });
 

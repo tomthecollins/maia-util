@@ -1,7 +1,8 @@
 import array_equals from './array_equals'
+import array_approx_equals from './array_approx_equals'
 import sort_rows from './sort_rows'
 
-export default function unique_rows(point_set){
+export default function unique_rows(point_set, approx = false){
   // Tom Collins 16/12/2014.
   // In
   // point_set Array mandatory
@@ -31,16 +32,31 @@ export default function unique_rows(point_set){
   v[0] = [g[0]];
   var i = 1; // Increment over F and g.
   var j = 1; // Increment over U and v.
-  while (i < n){
-    if (array_equals(F[i],F[i - 1])){
-      v[j - 1].push(g[i]);
+  if (approx){
+    while (i < n){
+      if (array_approx_equals(F[i],F[i - 1])){
+        v[j - 1].push(g[i]);
+      }
+      else{
+        U[j] = F[i];
+        v[j] = [g[i]];
+        j++;
+      }
+      i++;
     }
-    else{
-      U[j] = F[i];
-      v[j] = [g[i]];
-      j++;
+  }
+  else {
+    while (i < n){
+      if (array_equals(F[i],F[i - 1])){
+        v[j - 1].push(g[i]);
+      }
+      else{
+        U[j] = F[i];
+        v[j] = [g[i]];
+        j++;
+      }
+      i++;
     }
-    i++;
   }
   return [U.slice(0, j), v.slice(0, j)];
 }

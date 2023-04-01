@@ -1903,7 +1903,7 @@ var mu = (function () {
     //return(outtemplate);
   }
 
-  function unique_rows(point_set){
+  function unique_rows(point_set, approx = false){
     // Tom Collins 16/12/2014.
     // In
     // point_set Array mandatory
@@ -1933,16 +1933,31 @@ var mu = (function () {
     v[0] = [g[0]];
     var i = 1; // Increment over F and g.
     var j = 1; // Increment over U and v.
-    while (i < n){
-      if (array_equals(F[i],F[i - 1])){
-        v[j - 1].push(g[i]);
+    if (approx){
+      while (i < n){
+        if (array_approx_equals(F[i],F[i - 1])){
+          v[j - 1].push(g[i]);
+        }
+        else {
+          U[j] = F[i];
+          v[j] = [g[i]];
+          j++;
+        }
+        i++;
       }
-      else {
-        U[j] = F[i];
-        v[j] = [g[i]];
-        j++;
+    }
+    else {
+      while (i < n){
+        if (array_equals(F[i],F[i - 1])){
+          v[j - 1].push(g[i]);
+        }
+        else {
+          U[j] = F[i];
+          v[j] = [g[i]];
+          j++;
+        }
+        i++;
       }
-      i++;
     }
     return [U.slice(0, j), v.slice(0, j)];
   }
@@ -3478,7 +3493,7 @@ var mu = (function () {
    * This documentation is in the process of being completed. Some functions have
    * not had their existing documentation converted to JSDoc format yet.
    *
-   * @version 0.3.4
+   * @version 0.3.5
    * @author Tom Collins and Christian Coulon
    * @copyright 2016-2023
    *

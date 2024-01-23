@@ -5,6 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = points_belonging_to_interval;
 function points_belonging_to_interval(point_set, a, b) {
+  var ontimeIdx = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+  var durIdx = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 3;
+
   // Tom Collins 25/10/2011.
   // In
   // point_set Array mandatory
@@ -19,11 +22,11 @@ function points_belonging_to_interval(point_set, a, b) {
   var i = 0;
   var j = 0;
   while (i < L) {
-    if (point_set[i][0] < b && point_set[i][0] + point_set[i][3] > a) {
+    if (point_set[i][ontimeIdx] < b && point_set[i][ontimeIdx] + point_set[i][durIdx] > a) {
       segment[j] = point_set[i];
       j++;
     }
-    if (point_set[i][0] >= b) {
+    if (point_set[i][ontimeIdx] >= b) {
       i = L;
     }
     i++;

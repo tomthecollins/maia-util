@@ -69,6 +69,7 @@ Bugs can be reported to https://groups.google.com/d/forum/maia-inc-dev
 
 ## Release History
 
+* 0.3.8 Increased flexibility of segmentation.
 * 0.3.2-7 Inclusion of binomial_coefficient, factorial, and approx_equals.
 * 0.3.0-1 Managment of timelapse objects, including reduction of reliance on UUIDs.
 * 0.2.30 Added timelapse_object.

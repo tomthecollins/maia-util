@@ -60,7 +60,7 @@ export default function segment(
         segments.push({
           "ontime": a,
           "offtime": b,
-          "points": points_belonging_to_interval(pointSet, a, b)
+          "points": points_belonging_to_interval(pointSet, a, b, onIdx, durIdx)
         });
       }
     }

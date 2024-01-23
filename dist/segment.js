@@ -80,7 +80,7 @@ function segment(pointSet) {
         segments.push({
           "ontime": a,
           "offtime": b,
-          "points": (0, _points_belonging_to_interval2.default)(pointSet, a, b)
+          "points": (0, _points_belonging_to_interval2.default)(pointSet, a, b, onIdx, durIdx)
         });
       }
     }

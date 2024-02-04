@@ -69,9 +69,10 @@ Bugs can be reported to https://groups.google.com/d/forum/maia-inc-dev
 
 ## Release History
 
+* 0.3.11 Integrated approx_equals in count_rows.
 * 0.3.8-10 Increased flexibility of segmentation.
 * 0.3.2-7 Inclusion of binomial_coefficient, factorial, and approx_equals.
-* 0.3.0-1 Managment of timelapse objects, including reduction of reliance on UUIDs.
+* 0.3.0-1 Management of timelapse objects, including reduction of reliance on UUIDs.
 * 0.2.30 Added timelapse_object.
 * 0.2.28-29 Incorporating velocity property in comp_obj2note_point_set() and updating SIAR implementation.
 * 0.2.26-27 Fixed a bug in group_grace_by_contiguous_id.

@@ -25,11 +25,15 @@ function unique_rows(point_set) {
   // Tom Collins 16/12/2014.
   // In
   // point_set Array mandatory
+  // approx Boolean optional
   // Out Array
-  // The only argument to this function is an array consisting of numeric
-  // arrays of uniform dimension (what I call a point set). This function
-  // returns the unique elements in lexicographic order as first argument. As
-  // second argument are the indices of each element from the input array.
+  // The first argument to this function is an array consisting of numeric
+  // arrays of uniform dimension (what I call a point set). The second
+  // (optional) argument approx determines whether arrays are compared for
+  // equality up to some level of tolerance (approx = true) or not (approx =
+  // false). This function returns the unique elements in lexicographic order as
+  // first argument. As second argument are the indices of each element from the
+  // input array.
 
   // Catch empty arrays.
   var n = point_set.length;

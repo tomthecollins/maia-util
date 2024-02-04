@@ -1,6 +1,8 @@
 import copy_point_set from './copy_point_set'
 import sort_rows from './sort_rows'
 import array_equals from './array_equals'
+import array_approx_equals from './array_approx_equals'
+
 /**
  * This function counts rows of the input `point_set`, weighted, if desired, by
  * values in `wght_idx`.
@@ -32,7 +34,7 @@ import array_equals from './array_equals'
  *   ]
  * ]
  */
-export default function count_rows(point_set, wght_idx){
+export default function count_rows(point_set, wght_idx, approx = false){
   // No check on point_set credentials at present...
   if (wght_idx !== undefined && wght_idx < point_set[0].length){
     // Make a copy of the point_set, where wght_idx values are in the final
@@ -63,13 +65,25 @@ export default function count_rows(point_set, wght_idx){
     var i = 1; // Increment over F and g.
     var j = 1; // Increment over U and v.
     while (i < point_set.length){
-      if (array_equals(F[i].slice(0, k),F[i - 1].slice(0, k))){
-        v[j - 1] = v[j - 1] + F[i][k];
+      if (approx){
+        if (array_approx_equals(F[i].slice(0, k),F[i - 1].slice(0, k))){
+          v[j - 1] = v[j - 1] + F[i][k];
+        }
+        else{
+          U[j] = F[i].slice(0, k);
+          v[j] = F[i][k];
+          j++;
+        }
       }
-      else{
-        U[j] = F[i].slice(0, k);
-        v[j] = F[i][k];
-        j++;
+      else {
+        if (array_equals(F[i].slice(0, k),F[i - 1].slice(0, k))){
+          v[j - 1] = v[j - 1] + F[i][k];
+        }
+        else{
+          U[j] = F[i].slice(0, k);
+          v[j] = F[i][k];
+          j++;
+        }
       }
       i++;
     }
@@ -90,13 +104,25 @@ export default function count_rows(point_set, wght_idx){
     var i = 1; // Increment over F and g.
     var j = 1; // Increment over U and v.
     while (i < point_set.length){
-      if (array_equals(F[i],F[i - 1])){
-        v[j - 1]++;
+      if (approx){
+        if (array_approx_equals(F[i],F[i - 1])){
+          v[j - 1]++;
+        }
+        else{
+          U[j] = F[i];
+          v[j] = 1;
+          j++;
+        }
       }
-      else{
-        U[j] = F[i];
-        v[j] = 1;
-        j++;
+      else {
+        if (array_equals(F[i],F[i - 1])){
+          v[j - 1]++;
+        }
+        else{
+          U[j] = F[i];
+          v[j] = 1;
+          j++;
+        }
       }
       i++;
     }

@@ -17,6 +17,10 @@ var _array_equals = require('./array_equals');
 
 var _array_equals2 = _interopRequireDefault(_array_equals);
 
+var _array_approx_equals = require('./array_approx_equals');
+
+var _array_approx_equals2 = _interopRequireDefault(_array_approx_equals);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -51,6 +55,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * ]
  */
 function count_rows(point_set, wght_idx) {
+  var approx = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
   // No check on point_set credentials at present...
   if (wght_idx !== undefined && wght_idx < point_set[0].length) {
     // Make a copy of the point_set, where wght_idx values are in the final
@@ -81,12 +87,22 @@ function count_rows(point_set, wght_idx) {
     var i = 1; // Increment over F and g.
     var j = 1; // Increment over U and v.
     while (i < point_set.length) {
-      if ((0, _array_equals2.default)(F[i].slice(0, k), F[i - 1].slice(0, k))) {
-        v[j - 1] = v[j - 1] + F[i][k];
+      if (approx) {
+        if ((0, _array_approx_equals2.default)(F[i].slice(0, k), F[i - 1].slice(0, k))) {
+          v[j - 1] = v[j - 1] + F[i][k];
+        } else {
+          U[j] = F[i].slice(0, k);
+          v[j] = F[i][k];
+          j++;
+        }
       } else {
-        U[j] = F[i].slice(0, k);
-        v[j] = F[i][k];
-        j++;
+        if ((0, _array_equals2.default)(F[i].slice(0, k), F[i - 1].slice(0, k))) {
+          v[j - 1] = v[j - 1] + F[i][k];
+        } else {
+          U[j] = F[i].slice(0, k);
+          v[j] = F[i][k];
+          j++;
+        }
       }
       i++;
     }
@@ -106,12 +122,22 @@ function count_rows(point_set, wght_idx) {
     var i = 1; // Increment over F and g.
     var j = 1; // Increment over U and v.
     while (i < point_set.length) {
-      if ((0, _array_equals2.default)(F[i], F[i - 1])) {
-        v[j - 1]++;
+      if (approx) {
+        if ((0, _array_approx_equals2.default)(F[i], F[i - 1])) {
+          v[j - 1]++;
+        } else {
+          U[j] = F[i];
+          v[j] = 1;
+          j++;
+        }
       } else {
-        U[j] = F[i];
-        v[j] = 1;
-        j++;
+        if ((0, _array_equals2.default)(F[i], F[i - 1])) {
+          v[j - 1]++;
+        } else {
+          U[j] = F[i];
+          v[j] = 1;
+          j++;
+        }
       }
       i++;
     }

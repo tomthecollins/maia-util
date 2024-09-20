@@ -69,6 +69,7 @@ Bugs can be reported to https://groups.google.com/d/forum/maia-inc-dev
 
 ## Release History
 
+* 0.3.12 Added entropy function.
 * 0.3.11 Integrated approx_equals in count_rows.
 * 0.3.8-10 Increased flexibility of segmentation.
 * 0.3.2-7 Inclusion of binomial_coefficient, factorial, and approx_equals.

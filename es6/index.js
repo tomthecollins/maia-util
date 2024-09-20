@@ -23,7 +23,7 @@
  * This documentation is in the process of being completed. Some functions have
  * not had their existing documentation converted to JSDoc format yet.
  *
- * @version 0.3.11
+ * @version 0.3.12
  * @author Tom Collins and Christian Coulon
  * @copyright 2016-2024
  *
@@ -97,6 +97,7 @@ import get_random_int_inclusive_default from './get_random_int_inclusive'
 import mean_default from './mean'
 import median_default from './median'
 import std_default from './std'
+import entropy_default from './entropy'
 import skewness_default from './skewness'
 import median_skewness_default from './median_skewness'
 import excess_kurtosis_default from './excess_kurtosis'
@@ -188,6 +189,7 @@ export const get_random_int_inclusive = get_random_int_inclusive_default
 export const mean = mean_default
 export const median = median_default
 export const std = std_default
+export const entropy = entropy_default
 export const skewness = skewness_default
 export const median_skewness = median_skewness_default
 export const excess_kurtosis = excess_kurtosis_default
@@ -278,6 +280,7 @@ export default {
   mean,
   median,
   std,
+  entropy,
   skewness,
   median_skewness,
   excess_kurtosis,

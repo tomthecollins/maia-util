@@ -38,6 +38,7 @@ var should = require('chai').should(),
   mean = mu.mean;
   median = mu.median;
   std = mu.std;
+  entropy = mu.entropy;
   skewness = mu.skewness;
   median_skewness = mu.median_skewness;
   excess_kurtosis = mu.excess_kurtosis;
@@ -608,6 +609,34 @@ describe('#median', function(){
 describe('#std', function(){
   it('maps std([727.7, 1086.5, 1091.0, 1361.3, 1490.5, 1956.1]) to 420.96', function(){
     (Math.round(100*std([727.7, 1086.5, 1091.0, 1361.3, 1490.5, 1956.1]))/100).should.equal(420.96);
+  });
+});
+
+
+describe('#entropy', function(){
+  it('maps entropy([1]) to 0', function(){
+    entropy([1]).should.equal(0);
+  });
+});
+
+
+describe('#entropy', function(){
+  it('maps entropy([0.5, 0.5]) to 1', function(){
+    entropy([0.5, 0.5]).should.equal(1);
+  });
+});
+
+
+describe('#entropy', function(){
+  it('maps entropy([0.25, 0.25, 0.25, 0.25]) to 2', function(){
+    entropy([0.25, 0.25, 0.25, 0.25]).should.equal(2);
+  });
+});
+
+
+describe('#entropy', function(){
+  it('maps entropy([0.25, 0.35, 0.25, 0.15]) to 1.9406', function(){
+    (Math.round(10000*entropy([0.25, 0.35, 0.25, 0.15]))/10000).should.equal(1.9406);
   });
 });
 

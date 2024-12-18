@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.timelapse_object = exports.rand_5_bit = exports.rand_alphanumeric = exports.copy_to_clipboard = exports.get_parameter_by_name = exports.farey_quantise = exports.farey = exports.string_separated_string2array = exports.my_last_string = exports.locations = exports.cardinality_score = exports.siar = exports.intersection = exports.maximal_translatable_pattern = exports.orthogonal_projection_not_unique_equalp = exports.lex_less_or_equal = exports.lex_less_or_equal_triple = exports.index_1st_element_gt = exports.sample_without_replacement = exports.mod = exports.excess_kurtosis = exports.median_skewness = exports.skewness = exports.entropy = exports.std = exports.median = exports.mean = exports.get_random_int_inclusive = exports.get_random_int = exports.get_random_arbitrary = exports.corr = exports.choose_one = exports.unique_rows = exports.restrict_point_set_in_nth_to_xs = exports.subtract_two_arrays = exports.sort_rows = exports.lex_more = exports.index_point_set = exports.get_unique = exports.copy_point_set = exports.multiply_array_by_constant = exports.min_argmin = exports.max_argmax = exports.binomial_coefficient = exports.factorial = exports.cyclically_permute_array_by = exports.array_sum = exports.array_object_index_of_array = exports.array_object_index_of = exports.append_array_of_arrays = exports.append_array = exports.segment = exports.score_segment_against_template = exports.points_belonging_to_interval = exports.harman_forward = exports.HarmAn_forward = exports.find_segment_against_template = exports.connect_or_not = exports.chord_lookup_pbmin7ths = exports.chord_templates_pbmin7ths = exports.krumhansl_and_kessler_key_profiles = exports.aarden_key_profiles = exports.fifth_steps_mode = exports.tonic_pitch_closest = exports.count_rows = exports.copy_array_object = exports.split_point_set_by_staff = exports.comp_obj2note_point_set = exports.staff_voice_xml2staff_voice_json = exports.sort_points_asc_by_id = exports.sort_points_asc = exports.row_of_max_bar_leq_bar_arg = exports.row_of_max_ontime_leq_ontime_arg = exports.resolve_expressions = exports.remove_duplicate_clef_changes = exports.pitch_and_octave2midi_note_morphetic_pair = exports.ontime_of_bar_and_beat_number = exports.nos_symbols_and_mode2key_name = exports.guess_morphetic_in_c_major = exports.guess_morphetic_in_C_major = exports.mnn2pitch_simple = exports.MNN2pitch_simple = exports.midi_note_morphetic_pair2pitch_and_octave = exports.guess_morphetic = exports.group_grace_by_contiguous_id = exports.default_page_and_system_breaks = exports.convert_1st_bar2anacrusis_val = exports.clef_sign_and_line2clef_name = exports.bar_and_beat_number_of_ontime = exports.append_ontimes_to_time_signatures = undefined;
+exports.timelapse_object = exports.rand_5_bit = exports.rand_alphanumeric = exports.copy_to_clipboard = exports.get_parameter_by_name = exports.farey_quantise = exports.farey = exports.string_separated_string2array = exports.my_last_string = exports.locations = exports.cardinality_score = exports.siar = exports.intersection_hash = exports.intersection = exports.translators = exports.maximal_translatable_pattern = exports.orthogonal_projection_not_unique_equalp = exports.lex_less_or_equal = exports.lex_less_or_equal_triple = exports.index_1st_element_gt = exports.sample_without_replacement = exports.mod = exports.excess_kurtosis = exports.median_skewness = exports.skewness = exports.entropy = exports.std = exports.median = exports.mean = exports.get_random_int_inclusive = exports.get_random_int = exports.get_random_arbitrary = exports.corr = exports.choose_one = exports.unique_rows = exports.restrict_point_set_in_nth_to_xs = exports.subtract_two_arrays = exports.sort_rows = exports.lex_more = exports.index_point_set = exports.get_unique = exports.copy_point_set = exports.multiply_array_by_constant = exports.min_argmin = exports.max_argmax = exports.binomial_coefficient = exports.factorial = exports.cyclically_permute_array_by = exports.array_sum = exports.array_object_index_of_array = exports.array_object_index_of = exports.append_array_of_arrays = exports.append_array = exports.segment = exports.score_segment_against_template = exports.points_belonging_to_interval = exports.harman_forward = exports.HarmAn_forward = exports.find_segment_against_template = exports.connect_or_not = exports.chord_lookup_pbmin7ths = exports.chord_templates_pbmin7ths = exports.krumhansl_and_kessler_key_profiles = exports.aarden_key_profiles = exports.fifth_steps_mode = exports.tonic_pitch_closest = exports.count_rows = exports.copy_array_object = exports.split_point_set_by_staff = exports.comp_obj2note_point_set = exports.staff_voice_xml2staff_voice_json = exports.sort_points_asc_by_id = exports.sort_points_asc = exports.row_of_max_bar_leq_bar_arg = exports.row_of_max_ontime_leq_ontime_arg = exports.resolve_expressions = exports.remove_duplicate_clef_changes = exports.pitch_and_octave2midi_note_morphetic_pair = exports.ontime_of_bar_and_beat_number = exports.nos_symbols_and_mode2key_name = exports.guess_morphetic_in_c_major = exports.guess_morphetic_in_C_major = exports.mnn2pitch_simple = exports.MNN2pitch_simple = exports.midi_note_morphetic_pair2pitch_and_octave = exports.guess_morphetic = exports.group_grace_by_contiguous_id = exports.default_page_and_system_breaks = exports.convert_1st_bar2anacrusis_val = exports.clef_sign_and_line2clef_name = exports.bar_and_beat_number_of_ontime = exports.append_ontimes_to_time_signatures = undefined;
 
 require('./util_array');
 
@@ -287,9 +287,17 @@ var _maximal_translatable_pattern = require('./maximal_translatable_pattern');
 
 var _maximal_translatable_pattern2 = _interopRequireDefault(_maximal_translatable_pattern);
 
+var _translators = require('./translators');
+
+var _translators2 = _interopRequireDefault(_translators);
+
 var _intersection = require('./intersection');
 
 var _intersection2 = _interopRequireDefault(_intersection);
+
+var _intersection_hash = require('./intersection_hash');
+
+var _intersection_hash2 = _interopRequireDefault(_intersection_hash);
 
 var _siar = require('./siar');
 
@@ -448,7 +456,9 @@ var lex_less_or_equal_triple = exports.lex_less_or_equal_triple = _lex_less_or_e
 var lex_less_or_equal = exports.lex_less_or_equal = _lex_less_or_equal2.default;
 var orthogonal_projection_not_unique_equalp = exports.orthogonal_projection_not_unique_equalp = _orthogonal_projection_not_unique_equalp2.default;
 var maximal_translatable_pattern = exports.maximal_translatable_pattern = _maximal_translatable_pattern2.default;
+var translators = exports.translators = _translators2.default;
 var intersection = exports.intersection = _intersection2.default;
+var intersection_hash = exports.intersection_hash = _intersection_hash2.default;
 var siar = exports.siar = _siar2.default;
 var cardinality_score = exports.cardinality_score = _cardinality_score2.default;
 var locations = exports.locations = _locations2.default;
@@ -539,7 +549,9 @@ exports.default = {
   lex_less_or_equal: lex_less_or_equal,
   orthogonal_projection_not_unique_equalp: orthogonal_projection_not_unique_equalp,
   maximal_translatable_pattern: maximal_translatable_pattern,
+  translators: translators,
   intersection: intersection,
+  intersection_hash: intersection_hash,
   siar: siar,
   cardinality_score: cardinality_score,
   locations: locations,

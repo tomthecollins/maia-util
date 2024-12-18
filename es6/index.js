@@ -108,7 +108,9 @@ import lex_less_or_equal_triple_default from './lex_less_or_equal_triple'
 import lex_less_or_equal_default from './lex_less_or_equal'
 import orthogonal_projection_not_unique_equalp_default from './orthogonal_projection_not_unique_equalp'
 import maximal_translatable_pattern_default from './maximal_translatable_pattern'
+import translators_default from './translators'
 import intersection_default from './intersection'
+import intersection_hash_default from './intersection_hash'
 import siar_default from './siar'
 import cardinality_score_default from './cardinality_score'
 import locations_default from './locations'
@@ -200,7 +202,9 @@ export const lex_less_or_equal_triple = lex_less_or_equal_triple_default
 export const lex_less_or_equal = lex_less_or_equal_default
 export const orthogonal_projection_not_unique_equalp = orthogonal_projection_not_unique_equalp_default
 export const maximal_translatable_pattern = maximal_translatable_pattern_default
+export const translators = translators_default
 export const intersection = intersection_default
+export const intersection_hash = intersection_hash_default
 export const siar = siar_default
 export const cardinality_score = cardinality_score_default
 export const locations = locations_default
@@ -291,7 +295,9 @@ export default {
   lex_less_or_equal,
   orthogonal_projection_not_unique_equalp,
   maximal_translatable_pattern,
+  translators,
   intersection,
+  intersection_hash,
   siar,
   cardinality_score,
   locations,

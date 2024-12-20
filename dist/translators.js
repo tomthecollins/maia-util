@@ -54,7 +54,7 @@ function translators(P, D) {
   // (P.length > 1)
   else {
       var _ret = function () {
-        // Take p1 and calculate D - p_0.
+        // Take p1 and calculate D - p_1.
         var E = dmv(D, P[0]);
         // console.log("E from dmv(D, P[0]):", E)
 
@@ -77,29 +77,30 @@ function translators(P, D) {
           // console.log("Dh:", Dh)
         }
 
-        var E_and_indices = void 0;
-        if (hash) {
-          E_and_indices = (0, _intersection_hash2.default)(dpv(E, P[1]), Dh, true);
-        } else {
-          E_and_indices = (0, _intersection2.default)(dpv(E, P[1]), D, 0);
-        }
+        var E_and_indices = [E, ["placeholder", "to", "start", "while", "loop"]];
+        // if (hash){
+        //   E_and_indices = intersection_hash(dpv(E, P[1]), Dh, true)
+        // }
+        // else {
+        //   E_and_indices = intersection(dpv(E, P[1]), D, 0)
+        // }
         // console.log("E_and_indices for p_1:", E_and_indices)
 
-        var i = 1;
-        while (i < P.length - 1 && E_and_indices[1]) {
+        var i = 0;
+        while (i < P.length - 1 && E_and_indices[1].length > 1) {
           // console.log("i:", i)
-          // Candidates that remain:
-          E = E_and_indices[1].map(function (idx) {
-            return E[idx];
-          });
-          // console.log("candidates E after p_" + i + ":", E)
-
           if (hash) {
             E_and_indices = (0, _intersection_hash2.default)(dpv(E, P[i + 1]), Dh, true);
           } else {
             E_and_indices = (0, _intersection2.default)(dpv(E, P[i + 1]), D, 0);
           }
           // console.log("E_and_indices for p_" + (i + 1) + ":", E_and_indices)
+
+          // Candidates that remain:
+          E = E_and_indices[1].map(function (idx) {
+            return E[idx];
+          });
+          // console.log("candidates E after p_" + i + ":", E)
 
           i = i + 1;
         }

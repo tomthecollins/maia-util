@@ -36,7 +36,7 @@ export default function translators(P, D, hash = true){
 
   // (P.length > 1)
   else {
-    // Take p1 and calculate D - p_0.
+    // Take p1 and calculate D - p_1.
     let E = dmv(D, P[0])
     // console.log("E from dmv(D, P[0]):", E)
 
@@ -60,24 +60,18 @@ export default function translators(P, D, hash = true){
       // console.log("Dh:", Dh)
     }
 
-    let E_and_indices
-    if (hash){
-      E_and_indices = intersection_hash(dpv(E, P[1]), Dh, true)
-    }
-    else {
-      E_and_indices = intersection(dpv(E, P[1]), D, 0)
-    }
+    let E_and_indices = [E, ["placeholder", "to", "start", "while", "loop"]]
+    // if (hash){
+    //   E_and_indices = intersection_hash(dpv(E, P[1]), Dh, true)
+    // }
+    // else {
+    //   E_and_indices = intersection(dpv(E, P[1]), D, 0)
+    // }
     // console.log("E_and_indices for p_1:", E_and_indices)
 
-    let i = 1
-    while (i < P.length - 1 && E_and_indices[1]){
+    let i = 0
+    while (i < P.length - 1 && E_and_indices[1].length > 1){
       // console.log("i:", i)
-      // Candidates that remain:
-      E = E_and_indices[1].map(function(idx){
-        return E[idx]
-      })
-      // console.log("candidates E after p_" + i + ":", E)
-
       if (hash){
         E_and_indices = intersection_hash(dpv(E, P[i + 1]), Dh, true)
       }
@@ -85,6 +79,12 @@ export default function translators(P, D, hash = true){
         E_and_indices = intersection(dpv(E, P[i + 1]), D, 0)
       }
       // console.log("E_and_indices for p_" + (i + 1) + ":", E_and_indices)
+
+      // Candidates that remain:
+      E = E_and_indices[1].map(function(idx){
+        return E[idx]
+      })
+      // console.log("candidates E after p_" + i + ":", E)
 
       i=i+1
     }

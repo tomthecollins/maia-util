@@ -1,9 +1,22 @@
-const mu = require("./../dist/index")
+const mu = require("./../../dist/index")
+
+
+// const ans = mu.intersection([[1, 2]], [[3, 4]])
+//
+// if(ans){
+//   console.log("Truthiness of [] is true.")
+// }
+// else{
+//   console.log("Truthiness of [] is false.")
+// }
+//
+// return
 
 const D = [[5, 6], [5, 7], [6, 7], [7, 8], [8, 5], [8, 7], [8, 9], [9, 7],
   [9, 8], [10, 8], [12, 6], [12, 8], [12, 10], [13, 5], [13, 9], [14, 7],
   [15, 5], [15, 7], [15, 10], [16, 6]]
 const P = [[10, 8], [12, 8], [12, 10], [13, 9]]
+const Q = [[5, 6], [16, 6]]
 const hash = false
 
 const ans1 = mu.translators(P, D, hash)
@@ -13,6 +26,9 @@ console.log("ans1:", ans1)
 // After one pass:
 // Indices into members of E = p_1 + D - p_0: 2, 3, 9, 13
 // [ [ 8, 7 ], [ 9, 8 ], [ 12, 8 ], [ 15, 5 ] ]
+
+const ans1Q = mu.translators(Q, D, hash)
+console.log("ans1Q:", ans1Q)
 
 
 const ans2 = mu.translators([[6, 7]], D, hash)

@@ -1,4 +1,4 @@
-const mu = require("./../dist/index")
+const mu = require("./../../dist/index")
 
 const n = 25
 const k = 8

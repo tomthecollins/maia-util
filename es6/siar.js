@@ -53,7 +53,7 @@ export default function siar(D, r = 1){
       }
     }
   }
-  console.log("V:", V)
+  // console.log("V:", V)
 
   // Run SIA on a value of V if it contains more than one datapoint, recording
   // the results in one hash table L.

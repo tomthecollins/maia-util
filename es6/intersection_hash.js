@@ -30,7 +30,7 @@ export default function intersection_hash(arr, obj, index = false){
       // Calculate value rounded to 5 d.p. and convert to string.
       return (Math.round(100000*(val))/100000).toString()
     }).toString()
-    if (obj[hash]){
+    if (obj[hash] !== undefined){
       ans.push(arr[i])
       // Handle recording of indices.
       if (index){

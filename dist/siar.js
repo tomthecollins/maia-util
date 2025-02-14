@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = siar;
 
-var _intersection = require("./intersection");
+var _intersection_hash = require("./intersection_hash");
 
-var _intersection2 = _interopRequireDefault(_intersection);
+var _intersection_hash2 = _interopRequireDefault(_intersection_hash);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36,6 +36,7 @@ function siar(D) {
   // This function calculates the structure induction algorithm over r
   // superdiagonals (SIAR, Collins, 2011).
   // It is assumed that the point set D is in lexicograhic order.
+  // The implementation utilises a hash table, and is accurate to within 1e-5.
 
   var n = D.length;
   // Checking for input errors with regards to r.
@@ -73,11 +74,12 @@ function siar(D) {
   for (var i = 0; i < r; i++) {
     _loop(i);
   }
-  // console.log("V:", V)
+  console.log("V:", V);
 
   // Run SIA on a value of V if it contains more than one datapoint, recording
   // the results in one hash table L.
   var L = {};
+  var ndim = D[0].length;
   Object.keys(V).forEach(function (k) {
     if (V[k].length > 1) {
       var sidx = void 0;
@@ -91,14 +93,17 @@ function siar(D) {
       sidx.forEach(function (i) {
         sidx.forEach(function (j) {
           if (j > i) {
-            var hash = D[j].map(function (djk, k) {
-              // Calculate difference rounded to 5 d.p. and convert to string.
-              return (Math.round(100000 * (djk - D[i][k])) / 100000).toString();
-            }).toString();
-            if (L[hash] === undefined) {
-              L[hash] = 1;
+            var hash = [];
+            for (var dim = 0; dim < ndim; dim++) {
+              hash[dim] = Math.round(100000 * (D[j][dim] - D[i][dim])) / 100000;
+            }
+            var hashAsStr = hash.join(",");
+
+            // console.log("hash", hash_x, hash_y)
+            if (L[hashAsStr] === undefined) {
+              L[hashAsStr] = { "cnt": 1, "hash": hash };
             } else {
-              L[hash]++;
+              L[hashAsStr].cnt++;
             }
           }
         });
@@ -107,39 +112,44 @@ function siar(D) {
   });
   // console.log("L:", L)
   var lByFreq = Object.keys(L).sort(function (a, b) {
-    return L[b] - L[a];
+    return L[b].cnt - L[a].cnt;
   });
   // console.log("lByFreq:", lByFreq)
 
+  // Hash D.
+  var Dh = void 0;
+  Dh = {};
+  D.map(function (d, idx) {
+    var hash = d.map(function (val) {
+      // Calculate difference rounded to 5 d.p. and convert to string.
+      return (Math.round(100000 * val) / 100000).toString();
+    }).toString();
+    if (Dh[hash] === undefined) {
+      Dh[hash] = idx;
+    } else {
+      console.log("Error: non-unique entry in D!");
+      return;
+    }
+  });
+  // console.log("Dh:", Dh)
+
   // This is the bit that could be parallelised.
-  return lByFreq.map(function (vecAsStr) {
-    // Calculate MTP(v, D) for each v = vecAsStr.
-    // Convert string back to vector.
-    var vec = vecAsStr.split(",").map(function (numAsStr) {
-      return parseFloat(numAsStr);
-    });
-    // console.log("vec:", vec)
-    // Now need to intersect(D, D - v).
-    // Code for D - v
+  var outputMTP = [];
+  lByFreq.forEach(function (vecAsStr) {
+    // Object.keys(L).forEach(function(vecAsStr){
+    var vec = L[vecAsStr].hash;
     var Dmv = D.map(function (d) {
       return d.map(function (dk, k) {
         return dk - vec[k];
       });
     });
-    // console.log("intersection(D, Dmv):", intersection(D, Dmv))
-    // Code for intersect(A, B) where we can assume lexicographic ordering of A and B.
-    // Could collect indices too with
-    // const MTPindices = intersection(D, Dmv, 0)
-    // return {
-    //   "vector": vec,
-    //   "MTP": MTPindices[0],
-    //   "indices": MTPindices[1]
-    // }
-    return {
+    // console.log("Dmv:", Dmv)
+    outputMTP.push({
       "vector": vec,
-      "MTP": (0, _intersection2.default)(D, Dmv)
-    };
+      "MTP": (0, _intersection_hash2.default)(Dmv, Dh)
+    });
   });
+  return outputMTP;
 }
 
 // Here is some code for parallelising Node.

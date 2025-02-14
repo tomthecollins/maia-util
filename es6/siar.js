@@ -1,4 +1,4 @@
-import intersection from './intersection'
+import intersection_hash from './intersection_hash'
 
 // const child_process = require('child_process')
 // const numchild = require('os').cpus().length
@@ -23,6 +23,7 @@ export default function siar(D, r = 1){
   // This function calculates the structure induction algorithm over r
   // superdiagonals (SIAR, Collins, 2011).
   // It is assumed that the point set D is in lexicograhic order.
+  // The implementation utilises a hash table, and is accurate to within 1e-5.
 
   const n = D.length
   // Checking for input errors with regards to r.
@@ -52,11 +53,12 @@ export default function siar(D, r = 1){
       }
     }
   }
-  // console.log("V:", V)
+  console.log("V:", V)
 
   // Run SIA on a value of V if it contains more than one datapoint, recording
   // the results in one hash table L.
   const L = {}
+  const ndim = D[0].length
   Object.keys(V).forEach(function(k){
     if (V[k].length > 1){
       let sidx
@@ -69,16 +71,20 @@ export default function siar(D, r = 1){
       sidx.forEach(function(i){
         sidx.forEach(function(j){
           if (j > i){
-            const hash = D[j].map(function(djk, k){
-              // Calculate difference rounded to 5 d.p. and convert to string.
-              return (Math.round(100000*(djk - D[i][k]))/100000).toString()
-            }).toString()
-            if (L[hash] === undefined){
-              L[hash] = 1
+            let hash = []
+            for (let dim = 0; dim < ndim; dim++){
+              hash[dim] = Math.round(100000*(D[j][dim] - D[i][dim]))/100000
+            }
+            const hashAsStr = hash.join(",")
+
+            // console.log("hash", hash_x, hash_y)
+            if (L[hashAsStr] === undefined){
+              L[hashAsStr] = {"cnt":1, "hash": hash}
             }
             else {
-              L[hash]++
+              L[hashAsStr].cnt++
             }
+
           }
         })
       })
@@ -86,39 +92,45 @@ export default function siar(D, r = 1){
   })
   // console.log("L:", L)
   const lByFreq = Object.keys(L).sort(function(a, b){
-    return L[b] - L[a]
+    return L[b].cnt - L[a].cnt
   })
   // console.log("lByFreq:", lByFreq)
 
+  // Hash D.
+  let Dh
+  Dh = {}
+  D.map(function(d, idx){
+    const hash = d.map(function(val){
+      // Calculate difference rounded to 5 d.p. and convert to string.
+      return (Math.round(100000*(val))/100000).toString()
+    }).toString()
+    if (Dh[hash] === undefined){
+      Dh[hash] = idx
+    }
+    else {
+      console.log("Error: non-unique entry in D!")
+      return
+    }
+  })
+  // console.log("Dh:", Dh)
+
   // This is the bit that could be parallelised.
-  return lByFreq.map(function(vecAsStr){
-    // Calculate MTP(v, D) for each v = vecAsStr.
-    // Convert string back to vector.
-    const vec = vecAsStr.split(",").map(function(numAsStr){
-      return parseFloat(numAsStr)
-    })
-    // console.log("vec:", vec)
-    // Now need to intersect(D, D - v).
-    // Code for D - v
+  let outputMTP = []
+  lByFreq.forEach(function(vecAsStr){
+  // Object.keys(L).forEach(function(vecAsStr){
+    const vec = L[vecAsStr].hash
     const Dmv = D.map(function(d){
       return d.map(function(dk, k){
         return dk - vec[k]
       })
     })
-    // console.log("intersection(D, Dmv):", intersection(D, Dmv))
-    // Code for intersect(A, B) where we can assume lexicographic ordering of A and B.
-    // Could collect indices too with
-    // const MTPindices = intersection(D, Dmv, 0)
-    // return {
-    //   "vector": vec,
-    //   "MTP": MTPindices[0],
-    //   "indices": MTPindices[1]
-    // }
-    return {
+    // console.log("Dmv:", Dmv)
+    outputMTP.push({
       "vector": vec,
-      "MTP": intersection(D, Dmv)
-    }
+      "MTP": intersection_hash(Dmv, Dh)
+    })
   })
+  return outputMTP
 }
 
 // Here is some code for parallelising Node.

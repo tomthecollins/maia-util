@@ -69,6 +69,7 @@ Bugs can be reported to https://groups.google.com/d/forum/maia-inc-dev
 
 ## Release History
 
+* 0.3.18 cardinality_score() now uses approximate comparison by default.
 * 0.3.16-17 Fixed a bug in intersection_hash.
 * 0.3.13-15 Added translators function.
 * 0.3.12 Added entropy function.

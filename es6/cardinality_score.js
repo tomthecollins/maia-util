@@ -23,7 +23,7 @@ import max_argmax from './max_argmax'
  * →
  * [0.625, [2, 3]]
  */
-export default function cardinality_score(P, Q, allowTrans = true){
+export default function cardinality_score(P, Q, allowTrans = true, approx = true){
   const m = P.length
   const n = Q.length
   let numerator, maxTransVec
@@ -39,8 +39,11 @@ export default function cardinality_score(P, Q, allowTrans = true){
         bigL++
       }
     }
-    const bigV2 = count_rows(bigV)
+    // console.log("bigV:", bigV)
+    const bigV2 = count_rows(bigV, undefined, approx)
+    // console.log("bigV2:", bigV2)
     const ma = max_argmax(bigV2[1])
+    // console.log("ma:", ma)
     numerator = ma[0]
     maxTransVec = bigV2[0][ma[1]]
   }

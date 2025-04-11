@@ -43,6 +43,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 function cardinality_score(P, Q) {
   var allowTrans = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  var approx = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
 
   var m = P.length;
   var n = Q.length;
@@ -60,8 +61,11 @@ function cardinality_score(P, Q) {
         bigL++;
       }
     }
-    var bigV2 = (0, _count_rows2.default)(bigV);
+    // console.log("bigV:", bigV)
+    var bigV2 = (0, _count_rows2.default)(bigV, undefined, approx);
+    // console.log("bigV2:", bigV2)
     var ma = (0, _max_argmax2.default)(bigV2[1]);
+    // console.log("ma:", ma)
     numerator = ma[0];
     maxTransVec = bigV2[0][ma[1]];
   } else {
